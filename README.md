@@ -1,13 +1,15 @@
 # SPRING INTRO
 
-A repository to learn and exercise the intro to the basics and concepts of Spring Boot projects:
+A repository to learn and exercise the intro to the basics and concepts of Spring Boot projects with Monolithic Architecture:
 
 * Why Spring is used in the industry?
 * How to start a project with Spring Initilazr
 * application.yml and application.properties files
-* Layered Architecture and Spring Annotations
+* Repository, Controller, Service concepts in RestAPIs
 * Mapping Annotations and Request Types
 * JSON objects
+* Spring Data JPA Query Methods
+* Monolithic Architecture / Layers-Packages
 
 ## Dependencies
 Dependencies added on https://start.spring.io/
