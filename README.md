@@ -10,11 +10,3 @@ A repository to learn and exercise the intro to the basics and concepts of Sprin
 * JSON objects
 * Spring Data JPA Query Methods
 * Monolithic Architecture / Layers-Packages
-
-## Dependencies
-Dependencies added on https://start.spring.io/
-* Lombok
-* Spring Boot DevTools
-* Spring Web
-* Spring Data JPA
-* PostgreSQL Driver
