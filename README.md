@@ -1,4 +1,4 @@
-# SPRING INTRO
+# SPRING INTRO w MONOLITHIC ARCHITECTURE
 
 A repository to learn and exercise the intro to the basics and concepts of Spring Boot projects with Monolithic Architecture:
 
