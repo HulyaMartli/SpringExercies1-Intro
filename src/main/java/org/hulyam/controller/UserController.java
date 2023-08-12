@@ -1,7 +1,6 @@
 package org.hulyam.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.hulyam.constant.EndPoints;
 import org.hulyam.dto.request.UserSaveRequestDto;
 import org.hulyam.dto.response.UserFindAllResponseDto;
 import org.hulyam.repository.entity.User;

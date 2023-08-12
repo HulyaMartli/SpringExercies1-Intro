@@ -2,6 +2,7 @@ package org.hulyam.service;
 
 import org.hulyam.dto.request.UserSaveRequestDto;
 import org.hulyam.dto.response.UserFindAllResponseDto;
+import org.hulyam.mapper.IUserMapper;
 import org.hulyam.repository.IUserRepository;
 import org.hulyam.repository.entity.User;
 import org.hulyam.utility.ServiceManager;
@@ -61,22 +62,31 @@ public class UserService extends ServiceManager<User, Long> {
     }
 
     public void saveDto(UserSaveRequestDto dto){
-        User user = User.builder()
+        /*
+            User user = User.builder()
                 .name(dto.getName())
                 .address(dto.getAddress())
                 .tel(dto.getTel())
                 .build();
-        save(user);
+        */
+        // Instead of the code above,
+        // thanks to MapStruct we can do it in one line:
+        save(IUserMapper.INSTANCE.fromSaveRequestDto(dto));
     }
 
     public List<UserFindAllResponseDto> findAllResponseDto(){
         List<UserFindAllResponseDto> list = new ArrayList<>();
+        /*
         findAll().forEach(user -> {
             list.add(UserFindAllResponseDto.builder()
                             .name(user.getName())
                             .username(user.getUsername())
                             .profilePicture(user.getProfilePicture())
                     .build());
+        });
+        */
+        findAll().forEach(user -> {
+            list.add(IUserMapper.INSTANCE.fromUser(user));
         });
         return list;
     }
