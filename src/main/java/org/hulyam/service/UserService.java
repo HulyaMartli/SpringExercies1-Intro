@@ -1,10 +1,13 @@
 package org.hulyam.service;
 
+import org.hulyam.dto.request.UserSaveRequestDto;
+import org.hulyam.dto.response.UserFindAllResponseDto;
 import org.hulyam.repository.IUserRepository;
 import org.hulyam.repository.entity.User;
 import org.hulyam.utility.ServiceManager;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +58,26 @@ public class UserService extends ServiceManager<User, Long> {
 
     public List<User> findTop3ByNameOrderById(String name){
         return userRepository.findTop3ByNameOrderById(name);
+    }
+
+    public void saveDto(UserSaveRequestDto dto){
+        User user = User.builder()
+                .name(dto.getName())
+                .address(dto.getAddress())
+                .tel(dto.getTel())
+                .build();
+        save(user);
+    }
+
+    public List<UserFindAllResponseDto> findAllResponseDto(){
+        List<UserFindAllResponseDto> list = new ArrayList<>();
+        findAll().forEach(user -> {
+            list.add(UserFindAllResponseDto.builder()
+                            .name(user.getName())
+                            .username(user.getUsername())
+                            .profilePicture(user.getProfilePicture())
+                    .build());
+        });
+        return list;
     }
 }

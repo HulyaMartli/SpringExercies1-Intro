@@ -1,89 +1,92 @@
 package org.hulyam.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.hulyam.constant.EndPoints;
+import org.hulyam.dto.request.UserSaveRequestDto;
+import org.hulyam.dto.response.UserFindAllResponseDto;
 import org.hulyam.repository.entity.User;
 import org.hulyam.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Optional;
 
+import static org.hulyam.constant.EndPoints.*;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping(API+VERSION+USER)
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
-
-    @GetMapping("/save")
-    public ResponseEntity<User> save(String name, String city, String address, String tel) {
-        return ResponseEntity.ok(userService.save(
-                User.builder().name(name).city(city).address(address).tel(tel).build()
-        ));
+    @GetMapping(SAVE)
+    public ResponseEntity<String> save(UserSaveRequestDto dto) {
+        userService.saveDto(dto);
+        return ResponseEntity.ok("Save is successful!");
     }
 
-    @GetMapping("/findall")
-    public ResponseEntity<List<User>> findAll() {
-        return ResponseEntity.ok((List<User>) userService.findAll());
+    @GetMapping(FINDALL)
+    public ResponseEntity<List<UserFindAllResponseDto>> findAll() {
+        return ResponseEntity.ok((List<UserFindAllResponseDto>) userService.findAllResponseDto());
     }
 
-    @GetMapping("/hi")
+    // HTML & CSS example
+    @GetMapping(HI)
     public String hi() {
         return "<h1 style=\"color:red\">Hi!</h1>";
     }
 
     // http://localhost:9090/user/findbyname?name=Hulya
-    @GetMapping("/findbyname")
+    @GetMapping(FINDBYNAME)
     public ResponseEntity<User> findByName(String name) {
         return ResponseEntity.ok(userService.findByName(name)
         );
     }
 
-    @GetMapping("/findbyaddress")
+    @GetMapping(FINDBYADDRESS)
     public ResponseEntity<User> findByAddress(String address) {
         return ResponseEntity.ok(userService.findByAddress(address));
     }
 
-    @GetMapping("/findbynameandaddress")
+    @GetMapping(FINDBYNAMEANDADDRESS)
     public ResponseEntity<User> findByNameAndAddress(String name, String address) {
         return ResponseEntity.ok(userService.findByNameAndAddress(name, address));
     }
 
-    @GetMapping("/findbynameoraddress")
+    @GetMapping(FINDBYNAMEORADDRESS)
     public ResponseEntity<List<User>> findByNameOrAddress(String name, String address) {
         return ResponseEntity.ok(userService.findByNameOrAddress(name, address));
     }
 
-    @GetMapping("/findbynameandaddressandtel")
+    @GetMapping(FINDBYNAMEANDADDRESSANDTEL)
     public ResponseEntity<User> findByNameAndAddressAndTel(String name, String address, String tel) {
         return ResponseEntity.ok(userService.findByNameAndAddressAndTel(name, address, tel));
     }
 
-    @GetMapping("/findallbycity")
+    @GetMapping(FINDALLBYCITY)
     public ResponseEntity<List<User>> findAllByCity(String city) {
         return ResponseEntity.ok(userService.findAllByCity(city));
     }
 
-    @GetMapping("/findallbynamestartswith")
+    @GetMapping(FINDALLBYNAMESTARTSWITH)
     public List<User> findAllByNameStartsWith(String word){
         return userService.findAllByNameStartsWith(word);
     }
 
-    @GetMapping("/findoptionalbynameandtel")
+    @GetMapping(FINDOPTIONALBYNAMEANDTEL)
     public Optional<User> findOptionalByNameAndTel(String name, String tel){
         return userService.findOptionalByNameAndTel(name, tel);
     }
 
-    @GetMapping("/findallbynameorderbyiddesc")
+    @GetMapping(FINDALLBYNAMEORDERBYIDDESC)
     public List<User> findAllByNameOrderByIdDesc(String name){
         return userService.findAllByNameOrderByIdDesc(name);
     }
 
-    @GetMapping("/findtop3bynameorderbyid")
-    public List<User> findTop3ByNameOrderByName(String name){
+    @GetMapping(FINDTOP3BYNAMEORDERBYID)
+    public List<User> findTop3ByNameOrderById(String name){
         return userService.findTop3ByNameOrderById(name);
     }
 }

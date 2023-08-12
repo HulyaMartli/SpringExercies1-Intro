@@ -21,4 +21,8 @@ public class User {
     String city;
     String address;
     String tel;
+    String username;
+    String password;
+    String email;
+    String profilePicture;
 }
