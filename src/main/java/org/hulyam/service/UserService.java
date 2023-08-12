@@ -45,23 +45,23 @@ public class UserService extends ServiceManager<User, Long> {
         return userRepository.findAllByCity(city);
     }
 
-    public List<User> findAllByNameStartsWith(String word){
+    public List<User> findAllByNameStartsWith(String word) {
         return userRepository.findAllByNameStartsWith(word);
     }
 
-    public Optional<User> findOptionalByNameAndTel(String name, String tel){
+    public Optional<User> findOptionalByNameAndTel(String name, String tel) {
         return userRepository.findOptionalByNameAndTel(name, tel);
     }
 
-    public List<User> findAllByNameOrderByIdDesc(String name){
+    public List<User> findAllByNameOrderByIdDesc(String name) {
         return userRepository.findAllByNameOrderByIdDesc(name);
     }
 
-    public List<User> findTop3ByNameOrderById(String name){
+    public List<User> findTop3ByNameOrderById(String name) {
         return userRepository.findTop3ByNameOrderById(name);
     }
 
-    public void saveDto(UserSaveRequestDto dto){
+    public void saveDto(UserSaveRequestDto dto) {
         /*
             User user = User.builder()
                 .name(dto.getName())
@@ -74,7 +74,7 @@ public class UserService extends ServiceManager<User, Long> {
         save(IUserMapper.INSTANCE.fromSaveRequestDto(dto));
     }
 
-    public List<UserFindAllResponseDto> findAllResponseDto(){
+    public List<UserFindAllResponseDto> findAllResponseDto() {
         List<UserFindAllResponseDto> list = new ArrayList<>();
         /*
         findAll().forEach(user -> {
@@ -86,7 +86,7 @@ public class UserService extends ServiceManager<User, Long> {
         });
         */
         findAll().forEach(user -> {
-            list.add(IUserMapper.INSTANCE.fromUser(user));
+            list.add(IUserMapper.INSTANCE.toUserFindAllResponseDto(user));
         });
         return list;
     }

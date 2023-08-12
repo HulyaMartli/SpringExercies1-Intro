@@ -9,13 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 import java.util.Optional;
 
 import static org.hulyam.constant.EndPoints.*;
 
 @RestController
-@RequestMapping(API+VERSION+USER)
+@RequestMapping(API + VERSION + USER)
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -70,22 +71,22 @@ public class UserController {
     }
 
     @GetMapping(FINDALLBYNAMESTARTSWITH)
-    public List<User> findAllByNameStartsWith(String word){
+    public List<User> findAllByNameStartsWith(String word) {
         return userService.findAllByNameStartsWith(word);
     }
 
     @GetMapping(FINDOPTIONALBYNAMEANDTEL)
-    public Optional<User> findOptionalByNameAndTel(String name, String tel){
+    public Optional<User> findOptionalByNameAndTel(String name, String tel) {
         return userService.findOptionalByNameAndTel(name, tel);
     }
 
     @GetMapping(FINDALLBYNAMEORDERBYIDDESC)
-    public List<User> findAllByNameOrderByIdDesc(String name){
+    public List<User> findAllByNameOrderByIdDesc(String name) {
         return userService.findAllByNameOrderByIdDesc(name);
     }
 
     @GetMapping(FINDTOP3BYNAMEORDERBYID)
-    public List<User> findTop3ByNameOrderById(String name){
+    public List<User> findTop3ByNameOrderById(String name) {
         return userService.findTop3ByNameOrderById(name);
     }
 }

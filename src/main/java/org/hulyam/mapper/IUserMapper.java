@@ -4,7 +4,6 @@ import org.hulyam.dto.request.UserSaveRequestDto;
 import org.hulyam.dto.response.UserFindAllResponseDto;
 import org.hulyam.repository.entity.User;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
@@ -16,7 +15,8 @@ public interface IUserMapper {
     The methods for the classes that we want to convert
     will be written after that point. */
 
-    UserFindAllResponseDto fromUser(final User user);
+    UserFindAllResponseDto toUserFindAllResponseDto(final User user);
+
     User fromSaveRequestDto(final UserSaveRequestDto dto);
 
 }
