@@ -17,15 +17,15 @@ import java.util.Date;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
-    String brand;
-    String model;
-    Double price;
-    String barcode;
-    Long expirationdate;
-    String productpicture;
-    String description;
-    Long stockcount;
+    private Long id;
+    private String name;
+    private String brand;
+    private String model;
+    private Double price;
+    private String barcode;
+    private Long expirationdate;
+    private String productpicture;
+    private String description;
+    private Long stockcount;
 
 }
